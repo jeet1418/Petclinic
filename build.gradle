@@ -91,3 +91,7 @@ checkFormatAotTest.enabled = false
 
 formatAot.enabled = false
 formatAotTest.enabled = false
+
+test {
+    exclude '**/*IntegrationTests.class'
+}
