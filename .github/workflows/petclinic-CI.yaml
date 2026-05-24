@@ -58,7 +58,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/petclinic:${{github.sha}}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/petclinic:${{github.run_id}}
 
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
 
       - name: Update tag in Helm chart
         run: |
-          sed -i "s/tag: .*/tag: \"${{github.sha}}\"/" helm/petclinic-chart/values.yaml
+          sed -i "s/tag: .*/tag: \"${{github.run_id}}\"/" helm/petclinic-chart/values.yaml
 
       - name: Commit and push changes
         run: |
