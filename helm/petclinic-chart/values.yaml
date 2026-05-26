@@ -66,7 +66,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: petclinic.jeet1418.xyz
+    - host: www.jeet1418.xyz
       paths:
         - path: /
           pathType: Prefix
@@ -91,7 +91,7 @@ httpRoute:
     # namespace: default
   # Hostnames matching HTTP header.
   hostnames:
-  - petclinic.jeet1418.xyz
+  - www.jeet1418.xyz
   # List of rules and filters applied.
   rules:
   - matches:
