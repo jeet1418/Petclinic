@@ -81,4 +81,5 @@ jobs:
           git config --global user.name "Satyajit Behera"
           git add helm/petclinic-chart/values.yaml
           git commit -m "Update tag in Helm chart"
-          git push
+          git pull --rebase origin main
+          git push origin main
