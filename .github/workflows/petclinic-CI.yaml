@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - 'README.md'
       - 'EKS/**'
-      - 'helm/**'
       - '.github/**'
       - 'policy/**'
 
