@@ -46,3 +46,14 @@ out/
 _site/
 *.css
 !petclinic.css
+
+### Terraform ###
+EKS/Terraform/.terraform/
+EKS/Terraform/.terraform.lock.hcl
+EKS/Terraform/backend/.terraform/
+EKS/Terraform/backend/.terraform.lock.hcl
+EKS/Terraform/backend/terraform.tfstate
+EKS/Terraform/backend/terraform.tfstate.backup
+
+### Policy files ###
+policy/
