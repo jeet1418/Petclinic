@@ -32,14 +32,28 @@ You can then access the Petclinic at <http://localhost:8080/>.
 # DevOps Implementation
 
 ## Docker
+Wrote Dockerfile for this project and pushed it to my dockerhub registry
 
 ## Infrastructure as Code (Terraform)
+Wrote Terraform code to create s3 bucket for state file and DynamoDB table for state locking
+
+Wrote Terraform code using modular approach to create a VPC in AWS and a AWS EKS
 
 ## Kubernetes
+Used Kubernetes to deploy this project
+
+Created deployment.yaml, service,yamal & ingress.yaml files for deployment
+
+Then created Helm chart for this Petclinic project
 
 ## CI using Github Action
+Created the CI workflow using Github Action where the pipeline will:
+    - Build the Project
+    - Test whether everything is working fine
+    - Push the Docker Image into Dockerhub
+    - Update the Helm chart with the latest Docker Image tag
 
 ## CD using ArgoCD
-
-## Monitoring
-
+Deployed ArgoCD in the kubernetes cluster for CD:
+    - It will fetch the helm chart and will deploy the project
+    - It continuously looks for the git repository for any changes 
