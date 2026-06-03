@@ -29,31 +29,73 @@ You can then access the Petclinic at <http://localhost:8080/>.
 
 <img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
 
+<br><br>
+
 # DevOps Implementation
 
 ## Docker
-Wrote Dockerfile for this project and pushed it to my dockerhub registry
+
+Containerized the Petclinic application using Docker and implemented a multi-stage Dockerfile to optimize image size and improve build efficiency.
+
+Built and published versioned Docker images to Docker Hub, enabling consistent deployments across environments.
+
 
 ## Infrastructure as Code (Terraform)
-Wrote Terraform code to create s3 bucket for state file and DynamoDB table for state locking
 
-Wrote Terraform code using modular approach to create a VPC in AWS and a AWS EKS
+Provisioned AWS infrastructure using Terraform following Infrastructure as Code (IaC) best practices.
+
+Configured:
+
+* Amazon S3 for Terraform remote state management
+* DynamoDB for state locking to prevent concurrent infrastructure changes
+
+Implemented a modular Terraform architecture to provision:
+
+* AWS VPC
+* Public and Private Subnets
+* Networking Components
+* Amazon EKS Cluster
+
+This approach improves maintainability, scalability, and reusability of infrastructure code.
+
 
 ## Kubernetes
-Used Kubernetes to deploy this project
 
-Created deployment.yaml, service,yamal & ingress.yaml files for deployment
+Deployed the Petclinic application on Amazon EKS using Kubernetes.
 
-Then created Helm chart for this Petclinic project
+Created Kubernetes manifests including:
 
-## CI using Github Action
-Created the CI workflow using Github Action where the pipeline will:
-    - Build the Project
-    - Test whether everything is working fine
-    - Push the Docker Image into Dockerhub
-    - Update the Helm chart with the latest Docker Image tag
+* Deployment
+* Service
+* Ingress
 
-## CD using ArgoCD
-Deployed ArgoCD in the kubernetes cluster for CD:
-    - It will fetch the helm chart and will deploy the project
-    - It continuously looks for the git repository for any changes 
+Implemented Helm charts to package and manage Kubernetes resources, enabling simplified application deployment and version management.
+
+
+## Continuous Integration (CI) - GitHub Actions
+
+Implemented a CI pipeline using GitHub Actions to automate the software build and validation process.
+
+The pipeline performs the following actions:
+
+* Builds the application source code
+* Executes automated validation checks
+* Builds Docker container images
+* Pushes Docker images to Docker Hub
+* Updates Helm chart image tags with the latest application version
+
+This ensures that deployment artifacts are consistently generated and versioned.
+
+
+## Continuous Deployment (CD) - ArgoCD
+
+Implemented a GitOps-based Continuous Deployment workflow using ArgoCD running on Amazon EKS.
+
+ArgoCD performs the following functions:
+
+* Continuously monitors the Git repository for changes
+* Synchronizes Kubernetes resources with the desired state defined in Git
+* Automatically deploys updated Helm chart releases to the Kubernetes cluster
+* Maintains deployment consistency across environments
+
+This enables automated, reliable, and repeatable application deployments using GitOps principles.
