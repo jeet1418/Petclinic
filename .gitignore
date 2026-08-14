@@ -57,3 +57,7 @@ EKS/Terraform/backend/terraform.tfstate.backup
 
 ### Policy files ###
 policy/
+
+### mac 
+
+**/.DS_Store
